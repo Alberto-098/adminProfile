@@ -1,0 +1,7 @@
+{
+  "name": "adminProfile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
