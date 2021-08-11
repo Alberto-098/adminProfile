@@ -19,15 +19,15 @@
 
       <ion-list class="menu-items" lines="none">
 
-        <ion-item class="active">
+        <ion-item [routerLink]="['/admin']">
           <ion-icon name="home-outline"></ion-icon>Home
         </ion-item>
 
-        <ion-item routerLink="/edit">
+        <ion-item [routerLink]="['/admin/edit']">
           <ion-icon name="create-outline"></ion-icon>Edit
         </ion-item>
 
-        <ion-item routerLink="add">
+        <ion-item [routerLink]="['/admin/add']">
           <ion-icon name="add-circle-outline"></ion-icon>Add
         </ion-item>
 
