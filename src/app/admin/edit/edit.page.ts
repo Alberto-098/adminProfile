@@ -17,8 +17,6 @@ export class EditPage implements OnInit {
     
   }
 
- 
-
   // editModal recibe un parametro que es el item seleccionado de la lista de habitaciones. por ejemplo: item
   async editModal() {
     let item = {
@@ -28,6 +26,7 @@ export class EditPage implements OnInit {
       quantity: 12,
       status: true
     }
+
     // comentar este objeto quemado una vez que ya tenga la parte programada
     const modal = await this.modalController.create({
       component: ModalEditComponent,

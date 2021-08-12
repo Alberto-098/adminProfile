@@ -1,12 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>add</ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page">
 
-<ion-content>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>add</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content fullscreen>
 
-</ion-content>
+    <ion-list>
+
+      <!-- Title -->
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input placeholder="Enter Title"></ion-input>
+      </ion-item>
+
+      <!-- Description -->
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea placeholder="Enter Description"></ion-textarea>
+      </ion-item>
+
+      <!-- Price -->
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input type="number" placeholder="Enter Price"></ion-input>
+      </ion-item>
+
+      <!-- Quantity -->
+      <ion-item>
+        <ion-label position="floating">Quantity</ion-label>
+        <ion-input type="number" placeholder="Enter Quantity"></ion-input>
+      </ion-item>
+
+      <!-- Image -->
+      <ion-item>
+        <ion-label position="floating">Image</ion-label>
+        <ion-input type="text" placeholder="Image URL"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button expand="block">
+      Add 
+    </ion-button>
+  
+  </ion-content>
+  
+</div>
+
+

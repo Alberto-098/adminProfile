@@ -1,4 +1,5 @@
 <div class="ion-page">
+
   <ion-header translucent>
     <ion-toolbar>
       <ion-title>Edit Room</ion-title>
@@ -7,7 +8,9 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
   <ion-content fullscreen>
+
     <ion-list>
       <!-- Input with placeholder -->
       <ion-item>
@@ -36,13 +39,15 @@
       </ion-item>
       
       <!-- Arreglar esto -->
-
-      <ion-label position="floating">Status</ion-label>
-      <ion-radio-group value="{{status}}"> 
-        <ion-label>Active</ion-label>
-        <ion-radio slot="status" value="true"></ion-radio>
-        <ion-label>Inactive</ion-label>
-        <ion-radio slot="status" value="false"></ion-radio>
+      
+      <ion-radio-group value="biff">
+        <ion-label >Status</ion-label>
+        <ion-item>
+          <ion-label>Active</ion-label>
+          <ion-radio slot="start" value="biff"></ion-radio>
+          <ion-label>Inactive</ion-label>
+          <ion-radio slot="end" value="griff"></ion-radio>
+        </ion-item>
       </ion-radio-group>
 
     </ion-list>
