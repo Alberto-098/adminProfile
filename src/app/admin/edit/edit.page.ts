@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { hotel } from 'src/app/models/hotel.model';
+import { HotelService } from 'src/app/services/hotel-service.service';
 import { ModalEditComponent } from '../../modal-edit/modal-edit.component';
 
 @Component({
@@ -10,32 +12,33 @@ import { ModalEditComponent } from '../../modal-edit/modal-edit.component';
 export class EditPage implements OnInit {
 
   public currentRoom;
+  hotels : hotel[] = [];
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController,private hotelService: HotelService) { }
 
   ngOnInit() {
-    
+     this.getHotelsWithSnapshots();
+  }
+
+  getHotelsWithSnapshots(){
+    this.hotelService.getHotels().subscribe( (hotelsSnapshot) =>{
+      hotelsSnapshot.forEach((hotel) => {
+        let hotelSnapshot = JSON.parse(JSON.stringify(hotel.payload));
+        hotelSnapshot.id = hotel.payload.key;
+        hotelSnapshot.rooms = Object.values(hotelSnapshot.rooms);
+        this.hotels.push(hotelSnapshot);
+      });
+    });   
   }
 
   // editModal recibe un parametro que es el item seleccionado de la lista de habitaciones. por ejemplo: item
-  async editModal() {
-    let item = {
-      title: "Habitacion Deluxe",
-      description: "De lo mas fino para tus vacaciones. Mansion",
-      price: 1200,
-      quantity: 12,
-      status: true
-    }
-
-    // comentar este objeto quemado una vez que ya tenga la parte programada
+  async editModal(hotelId: number) {
+    let  currentHotel = this.hotels.find( hotel => hotel.id == hotelId );
     const modal = await this.modalController.create({
       component: ModalEditComponent,
       componentProps: {
-        'title': item.title,
-        'description': item.description,
-        'price': item.price,
-        'quantity': item.quantity,
-        'status': item.status
+        'rooms': currentHotel.rooms,
+        'hotelId': hotelId
       }
     });
     return await modal.present();

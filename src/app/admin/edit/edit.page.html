@@ -11,73 +11,26 @@
 
   <ion-list>
     <ion-list-header>
-      Rooms List
+      Hotels List
     </ion-list-header>
 
-    <ion-item>
+    <ion-item *ngFor="let hotel of hotels">
       <ion-card>
-        <img src="../../../assets/events/Hotel1.jpg" />
+        <img src="{{hotel.image}}" />
         <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
+          <ion-card-subtitle>Hotel</ion-card-subtitle>
+          <ion-card-title>{{hotel.name}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+          {{hotel.description}}
         </ion-card-content>
-        <ion-button expand="block" (click)="editModal()">
+        <ion-button expand="block" (click)="editModal(hotel.id)">
           Edit
         </ion-button>
       </ion-card>
     </ion-item>
 
-    <ion-item>
-      <ion-card>
-        <img src="../../../assets/events/Hotel1.jpg" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-        <ion-button expand="block">
-          Edit
-        </ion-button>
-      </ion-card>
-    </ion-item>
-
-    <ion-item>
-      <ion-card>
-        <img src="../../../assets/events/Hotel1.jpg" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-        <ion-button expand="block">
-          Edit
-        </ion-button>
-      </ion-card>
-    </ion-item>
-
-    <ion-item>
-      <ion-card>
-        <img src="../../../assets/events/Hotel1.jpg" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-        <ion-button expand="block">
-          Edit
-        </ion-button>
-      </ion-card>
-    </ion-item>
-
+ 
   </ion-list>
 
 </ion-content>
