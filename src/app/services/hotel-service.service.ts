@@ -18,6 +18,10 @@ export class HotelService {
     //return this.hotels.find(hotel => hotel.id == id);
   }*/
 
+  addRoom(hotelKey, newRoom: room){
+    this.db.list(`hotels/${hotelKey}/rooms/`).push(newRoom);
+  }
+
   getHotels() {
     return this.db.list('hotels').snapshotChanges();
   }

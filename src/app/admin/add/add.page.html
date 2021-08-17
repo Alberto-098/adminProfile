@@ -15,25 +15,20 @@
 
       <ion-item>
         <ion-label position="floating">Name</ion-label>
-        <ion-input placeholder="Enter Name"></ion-input>
+        <ion-input [(ngModel)]="name" placeholder="Enter Name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Price per night</ion-label>
-        <ion-input type="number" placeholder="Enter price per night"></ion-input>
+        <ion-input [(ngModel)]="price" type="number" placeholder="Enter price per night"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Capacity</ion-label>
-        <ion-input type="capacity" placeholder="Enter room capacity"></ion-input>
+        <ion-input [(ngModel)]="capacity" type="number" placeholder="Enter room capacity"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Quantity</ion-label>
-        <ion-input type="number" placeholder="Enter Quantity"></ion-input>
-      </ion-item>
-
-      <ion-radio-group value="active">
+      <ion-radio-group value="active" (ionChange)="changeActiveStatus($event)">
         <ion-list-header>
           <ion-label>
             Status
@@ -49,7 +44,7 @@
 
     </ion-list>
 
-    <ion-button expand="block">
+    <ion-button expand="block" (click)="add()">
       Add 
     </ion-button>
   

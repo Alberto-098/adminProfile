@@ -42,7 +42,7 @@ export class ModalEditComponent {
     const modal = await this.modalController.create({
       component: AddPage,
       componentProps: {
-        'isRoomSelected': true,
+        'hotelKey': this.hotelId,
       }
     });
     return await modal.present();
@@ -57,7 +57,7 @@ export class ModalEditComponent {
       isActive: this.isActive
     }
     this.hotelService.updateRoom(hotelId, roomId, updatedRoom);
-    location.reload()
+    location.reload();
   }
 
   async editRoom(room: room) {
