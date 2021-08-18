@@ -10,28 +10,29 @@
   </ion-header>
 
   <ion-content fullscreen>
+    <form [formGroup]="ionicForm" novalidate>
       <ion-list >
         <ion-item>
           <ion-label position="floating">Name</ion-label>
-          <ion-input placeholder="Enter Name" [(ngModel)]="name"></ion-input>
+          <ion-input formControlName="name" required placeholder="Enter Name" ></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
-          <ion-input placeholder="Enter Description" [(ngModel)]="description"></ion-input>
+          <ion-input formControlName="description" placeholder="Enter Description"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Image</ion-label>
-          <ion-input placeholder="Enter image" [(ngModel)]="image"></ion-input>
+          <ion-input formControlName="image" required placeholder="Enter image"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Price</ion-label>
-          <ion-input type="number" placeholder="Enter Price" [(ngModel)]="pricePerNight"></ion-input>
+          <ion-input formControlName="pricePerNight" required type="number" min="0" placeholder="Enter Price per night"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Capacity</ion-label>
-          <ion-input type="number" placeholder="Enter Price" [(ngModel)]="capacity"></ion-input>
+          <ion-input formControlName="capacity" required type="number" min="0" placeholder="Enter Price"></ion-input>
         </ion-item>
-        <ion-radio-group (ionChange)="changeActiveStatus($event)" [value]="isActive ? 'active' : 'inactive'">
+        <ion-radio-group formControlName="status" required (ionChange)="changeActiveStatus($event)">
           <ion-list-header>
             <ion-label>
               Status
@@ -45,7 +46,7 @@
           </ion-item>
         </ion-radio-group>
       </ion-list>
-  
+    </form>
       <ion-button expand="block" (click)="updateRoom(roomKey)">
         Update
       </ion-button>
