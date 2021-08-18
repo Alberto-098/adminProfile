@@ -10,39 +10,22 @@
   </ion-header>
 
   <ion-content fullscreen>
-
-    <ng-container *ngIf="!isRoomSelected">
-      <ion-list>
-        <ion-item *ngFor="let room of rooms">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <p>{{room.name}}</p>
-              </ion-col>
-              <ion-col>
-                <ion-button (click)="editRoom(room)">
-                  Edit
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-            
-        </ion-item>
-      </ion-list>
-      <ion-button expand="block" (click)="addNewRoom()">
-        Add New Room
-      </ion-button>
-    </ng-container>
-
-    <ng-container *ngIf="isRoomSelected">
       <ion-list >
         <ion-item>
           <ion-label position="floating">Name</ion-label>
           <ion-input placeholder="Enter Name" [(ngModel)]="name"></ion-input>
         </ion-item>
         <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input placeholder="Enter Description" [(ngModel)]="description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Image</ion-label>
+          <ion-input placeholder="Enter image" [(ngModel)]="image"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label position="floating">Price</ion-label>
-          <ion-input type="number" placeholder="Enter Price" [(ngModel)]="price"></ion-input>
+          <ion-input type="number" placeholder="Enter Price" [(ngModel)]="pricePerNight"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Capacity</ion-label>
@@ -63,9 +46,8 @@
         </ion-radio-group>
       </ion-list>
   
-      <ion-button expand="block" (click)="updateRoom(hotelId, roomId)">
+      <ion-button expand="block" (click)="updateRoom(roomKey)">
         Update
       </ion-button>
-    </ng-container>
   </ion-content>
 </div>

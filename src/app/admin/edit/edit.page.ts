@@ -25,20 +25,23 @@ export class EditPage implements OnInit {
       hotelsSnapshot.forEach((hotel) => {
         let hotelSnapshot = JSON.parse(JSON.stringify(hotel.payload));
         hotelSnapshot.id = hotel.payload.key;
-        hotelSnapshot.rooms = Object.values(hotelSnapshot.rooms);
         this.hotels.push(hotelSnapshot);
       });
     });   
   }
 
-  // editModal recibe un parametro que es el item seleccionado de la lista de habitaciones. por ejemplo: item
-  async editModal(hotelId: number) {
-    let  currentHotel = this.hotels.find( hotel => hotel.id == hotelId );
+  async editModal(hotelId: string) {
+    let  currentRoom = this.hotels.find( hotel => hotel.id == hotelId );
     const modal = await this.modalController.create({
       component: ModalEditComponent,
       componentProps: {
-        'rooms': currentHotel.rooms,
-        'hotelId': hotelId
+        'name': currentRoom.name,
+        'description': currentRoom.description,
+        'isActive': currentRoom.isActive,
+        'pricePerNight': currentRoom.pricePerNight,
+        'capacity': currentRoom.capacity,
+        'image': currentRoom.image,
+        'roomKey': currentRoom.id
       }
     });
     return await modal.present();

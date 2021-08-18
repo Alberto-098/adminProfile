@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { room } from 'src/app/models/room.model';
+import { hotel } from 'src/app/models/hotel.model';
 import { HotelService } from 'src/app/services/hotel-service.service';
 
 @Component({
@@ -12,6 +12,8 @@ export class AddPage implements OnInit {
   @Input() hotelKey: number;
 
   name: string;
+  image: string;
+  description: string;
   isActive: boolean = true;
   price: number;
   capacity: number;
@@ -22,15 +24,17 @@ export class AddPage implements OnInit {
   }
 
   add(){
-    let newRoom: room = {
-      id: Date.now(),
+    let newRoom : hotel = {
+      id: Date.now() + "",
+      image: this.image,
       name: this.name,
+      description: this.description,
       isActive: this.isActive,
       pricePerNight: this.price,
       capacity: this.capacity
     }
-    this.hotelService.addRoom(this.hotelKey, newRoom);
-    location.reload();
+    this.hotelService.addRoom(newRoom);
+    location.href = "/admin/edit";
   }
 
   changeActiveStatus(event){

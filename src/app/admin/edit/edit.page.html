@@ -18,12 +18,9 @@
       <ion-card>
         <img src="{{hotel.image}}" />
         <ion-card-header>
-          <ion-card-subtitle>Hotel</ion-card-subtitle>
+          <ion-card-subtitle>Habitación</ion-card-subtitle>
           <ion-card-title>{{hotel.name}}</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
-          {{hotel.description}}
-        </ion-card-content>
         <ion-button expand="block" (click)="editModal(hotel.id)">
           Edit
         </ion-button>

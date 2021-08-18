@@ -3,7 +3,7 @@
   <ion-header translucent>
     <ion-toolbar>
       <ion-title>add</ion-title>
-      <ion-buttons slot="end">
+      <ion-buttons slot="start">
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
@@ -16,6 +16,16 @@
       <ion-item>
         <ion-label position="floating">Name</ion-label>
         <ion-input [(ngModel)]="name" placeholder="Enter Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input [(ngModel)]="description" placeholder="Enter Description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Image URL</ion-label>
+        <ion-input [(ngModel)]="image" placeholder="Enter image URL"></ion-input>
       </ion-item>
 
       <ion-item>

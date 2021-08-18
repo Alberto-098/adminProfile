@@ -1,9 +1,9 @@
-import { room } from './room.model';
 export interface hotel {
-    id: number;
-    name: string;
+    id: string;
     description: string;
-    location: string;
+    name: string;
     image: string;
-    rooms?: Array<room>
+    pricePerNight: number;
+    capacity: number;
+    isActive: boolean
 }

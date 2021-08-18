@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { AddPage } from '../admin/add/add.page';
-import { room } from '../models/room.model';
+import { hotel } from '../models/hotel.model';
 import { HotelService } from '../services/hotel-service.service';
 
 @Component({
@@ -11,23 +10,19 @@ import { HotelService } from '../services/hotel-service.service';
 })
 export class ModalEditComponent {
 
-
-  @Input() rooms: Array<room>;
-  @Input() hotelId: number;
-  @Input() roomId: number;
-  @Input() isRoomSelected: boolean = false;
+  @Input() roomKey: string;
 
   @Input() name: string;
+  @Input() description: string;
+  @Input() image: string;
   @Input() isActive: boolean;
-  @Input() price: number;
+  @Input() pricePerNight: number;
   @Input() capacity: number;
   
   constructor(public modalController: ModalController, private hotelService: HotelService ) {
    }
 
    dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
     this.modalController.dismiss({
       'dismissed': true,
     });
@@ -37,44 +32,18 @@ export class ModalEditComponent {
     this.isActive = event.target.value == 'active' ? true : false;
   }
 
-  async addNewRoom(){
-    this.dismiss();
-    const modal = await this.modalController.create({
-      component: AddPage,
-      componentProps: {
-        'hotelKey': this.hotelId,
-      }
-    });
-    return await modal.present();
-  }
-
-  updateRoom(hotelId, roomId) {
-    let updatedRoom:room = {
-      id: roomId,
+  updateRoom(roomKey) {
+    let updatedRoom: hotel = {
+      id: roomKey,
+      description: this.description,
       name: this.name,
-      pricePerNight: this.price,
+      image: this.image,
+      pricePerNight: this.pricePerNight,
       capacity: this.capacity,
       isActive: this.isActive
     }
-    this.hotelService.updateRoom(hotelId, roomId, updatedRoom);
+    this.hotelService.updateRoom(roomKey, updatedRoom);
     location.reload();
-  }
-
-  async editRoom(room: room) {
-    this.dismiss();
-    const modal = await this.modalController.create({
-      component: ModalEditComponent,
-      componentProps: {
-        'isRoomSelected': true,
-        'roomId': room.id,
-        'hotelId': this.hotelId,
-        'name': room.name,
-        'isActive': room.isActive,
-        'price': room.pricePerNight,
-        'capacity': room.capacity
-      }
-    });
-    return await modal.present();
   }
 
 }
