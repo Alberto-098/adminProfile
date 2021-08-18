@@ -10,49 +10,50 @@
   </ion-header>
   
   <ion-content fullscreen>
+    <form [formGroup]="ionicForm" novalidate>
+        <ion-list>
 
-    <ion-list>
+          <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input formControlName="name" required placeholder="Enter Name"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input [(ngModel)]="name" placeholder="Enter Name"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-input formControlName="description" placeholder="Enter Description"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Description</ion-label>
-        <ion-input [(ngModel)]="description" placeholder="Enter Description"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Image URL</ion-label>
+            <ion-input formControlName="image" required placeholder="Enter image URL"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Image URL</ion-label>
-        <ion-input [(ngModel)]="image" placeholder="Enter image URL"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Price per night</ion-label>
+            <ion-input formControlName="pricePerNight" required min="0" type="number" placeholder="Enter price per night"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Price per night</ion-label>
-        <ion-input [(ngModel)]="price" type="number" placeholder="Enter price per night"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Capacity</ion-label>
+            <ion-input formControlName="capacity" required min="0" type="number" placeholder="Enter room capacity"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Capacity</ion-label>
-        <ion-input [(ngModel)]="capacity" type="number" placeholder="Enter room capacity"></ion-input>
-      </ion-item>
+          <ion-radio-group formControlName="status" required>
+            <ion-list-header>
+              <ion-label>
+                Status
+              </ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Active</ion-label>
+              <ion-radio slot="start" value="active"></ion-radio>
+              <ion-label>Inactive</ion-label>
+              <ion-radio slot="end" value="inactive"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>  
+    </form>
 
-      <ion-radio-group value="active" (ionChange)="changeActiveStatus($event)">
-        <ion-list-header>
-          <ion-label>
-            Status
-          </ion-label>
-        </ion-list-header>
-        <ion-item>
-          <ion-label>Active</ion-label>
-          <ion-radio slot="start" value="active"></ion-radio>
-          <ion-label>Inactive</ion-label>
-          <ion-radio slot="end" value="inactive"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-
-    </ion-list>
 
     <ion-button expand="block" (click)="add()">
       Add 

@@ -11,7 +11,6 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class ModalEditComponent implements OnInit {
   ionicForm: FormGroup;
-  isSubmitted: boolean = false;
 
   @Input() roomKey: string;
 
@@ -50,12 +49,7 @@ export class ModalEditComponent implements OnInit {
     return this.ionicForm.controls;
   }
 
-  changeActiveStatus(event){
-    this.isActive = event.target.value == 'active' ? true : false;
-  }
-
   updateRoom(roomKey) {
-    this.isSubmitted = true;
     if (this.ionicForm.valid) {
       let updatedRoom: hotel = {
         id: roomKey,
